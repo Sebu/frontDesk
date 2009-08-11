@@ -1,0 +1,8 @@
+
+demo app TODO (before release)
+* fix other equiv table error (institutsaccount)
+* send text
+* correct pc positions
+* I18n
+* dnd copy ( key-press key-release )
+* belegung ( List with String,String hash.to_a etc. )

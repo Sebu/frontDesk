@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48px"
+   height="48px"
+   id="svg2204"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="/homes/wheel/lomo/pyadm/src"
+   sodipodi:docname="pyadm_icon.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs2206" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7"
+     inkscape:cx="24"
+     inkscape:cy="24"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:window-width="1274"
+     inkscape:window-height="919"
+     inkscape:window-x="32"
+     inkscape:window-y="32" />
+  <metadata
+     id="metadata2209">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer">
+    <text
+       xml:space="preserve"
+       style="font-size:39.37401581px;font-style:normal;font-weight:normal;fill:#008000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="-3.2244072"
+       y="22.284386"
+       id="text2168"
+       transform="scale(0.8127187,1.2304381)"><tspan
+         sodipodi:role="line"
+         id="tspan2170"
+         x="-3.2244072"
+         y="22.284386">p</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:34.34859085px;font-style:normal;font-weight:normal;fill:#008000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="17.615501"
+       y="19.073811"
+       id="text2180"
+       transform="scale(0.9316248,1.0733934)"><tspan
+         sodipodi:role="line"
+         id="tspan2182"
+         x="17.615501"
+         y="19.073811">y</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:30.72774315px;font-style:normal;font-weight:normal;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="4.4322214"
+       y="44.023396"
+       id="text2251"
+       transform="scale(0.9340319,1.0706272)"><tspan
+         sodipodi:role="line"
+         id="tspan2253"
+         x="4.4322214"
+         y="44.023396">a</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:27.45639801px;font-style:normal;font-weight:normal;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="23.179407"
+       y="39.140877"
+       id="text2255"
+       transform="scale(0.8309295,1.2034716)"><tspan
+         sodipodi:role="line"
+         id="tspan2257"
+         x="23.179407"
+         y="39.140877">d</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.89121628px;font-style:normal;font-weight:normal;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="42.704323"
+       y="34.798943"
+       id="text2259"
+       transform="scale(0.7337125,1.3629317)"><tspan
+         sodipodi:role="line"
+         id="tspan2261"
+         x="42.704323"
+         y="34.798943">m</tspan></text>
+  </g>
+</svg>
