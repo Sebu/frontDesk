@@ -212,18 +212,18 @@ class MainController < Indigo::Controller
     end
 
     # load user names from yppassed
+    # TODO: move to user model class?
     IO.popen("ypcat passwd").each { |line|
       Main.active.user_list.add(line.split(":").values_at(0, 4)) 
     }
+
     
-    
+           
     refresh = Thread.new {
       session[:old_timestamp] = 0
 
       while true
         puts "refresh start"
-
-       
         # update prectab data
         if Prectab.changed?
           Main.active.computers_cache.each_value {|computer| computer.prectab = [nil,nil]; computer.color_changed; computer.user_changed }
@@ -243,10 +243,8 @@ class MainController < Indigo::Controller
         end
         session[:old_timestamp] = Time.now.strftime("%j%H%M%S")
 
-
         # update printers
         Main.active.printers.each { |p| p.update_job_count; p.update_accepts; p.update_snmp }
-
         puts "refresh end"
         sleep 20
       end  
@@ -266,6 +264,7 @@ class MainController < Indigo::Controller
           scan = socket.recvfrom(25)
           type, Main.active.scan_string = check_scanner_string(scan[0])
           Debug.log.debug "Scanner says #{scan} #{type}, #{Main.active.scan_string}"
+          
           case type
           when :card
             accounts = User.find_accounts_by_barcode(Main.active.scan_string)
@@ -290,7 +289,8 @@ class MainController < Indigo::Controller
           else
             Debug.log.debug "#{type}, #{Main.active.scan_string}"
           end
-          sleep 1
+          
+          sleep 1 # wait some time for next scan atempt
         end
      }
     end

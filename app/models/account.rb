@@ -6,7 +6,7 @@ class Account < UserAccountDB
   set_table_name "map"
   belongs_to :user
   
-  attr_readonly :barcode #, :account
+  attr_readonly :barcode
   attr_accessible :account, :locked, :color, :barcode
 
   #validate :valid_account
@@ -70,22 +70,23 @@ class Account < UserAccountDB
 
   def color
      @icons ||= {}
-     color = CONFIG['color_mapping'][ Account.gen_color([self.account])]
-     self[:color] ||= @icons[color] ||= Gdk::Pixbuf.new("resources/images/#{color}.png") #"info" # CONFIG['colors'][CONFIG['color_mapping'][ Account.gen_color([self.account])]]
+     color = CONFIG['color_mapping'][type]
+     self[:color] ||= @icons[color] ||= Gdk::Pixbuf.new("resources/images/#{color}.png")
   end
 
 
   def notifies_count
     self.notifies.size > 0 ? "important" : "fluggengrubenheimchen"
   end
-
   
   def notifies_text
     self.notifies.collect { |item| "#{item.body} @ #{item.time}" }.join("\n")
   end
+  
   def notifies
     @notifies = Notify.find_all_by_name(self.account)
   end
+  
   def create_notify(text)
     Notify.create(self.account, text)
     @notifies = nil
@@ -97,7 +98,7 @@ class Account < UserAccountDB
   end
 
   def after_initialize
-   self[:locked] ||= get_lock_state(self.account)
+   self[:locked] ||= get_lock_state
   end
 
   def valid_account
@@ -115,33 +116,39 @@ class Account < UserAccountDB
     end    
   end
 
-  
-  def self.gen_color(users)
-    users.each { |user|
-      case user
-      when "jeder": return :jeder
-      when "nobody": return :nobody
-      else
-        return :normal if INDIGO_ENV == "development"
-        case `getgroup -stat "#{user}"`.chomp!
-        when "excoll","wheel": return :wheel
-        when "assi","tutor": return :tutor
-        else 
-          case Account.get_passwd(user)
-          when :locked:    return :locked
-          when :no_passwd: return :no_passwd
-          else return :normal
-          end
-        end                  
-      end
-    }
-    return :frei            
+
+  def type
+    @type = Account.gen_color(account)
   end 
+
+  def self.gen_major_color(users)  
+    users.each { |user| return Account.gen_color(user) }
+    return :frei
+  end
   
-  def get_lock_state(user)
-    case Account.get_passwd(user)
-    when :ok:         return false
-    else              return true
+  def self.gen_color(user)
+    case user
+    when "jeder": :jeder
+    when "nobody": :nobody
+    else
+      return :normal unless INDIGO_ENV == "production"
+      case `getgroup -stat "#{user}"`.chomp!
+      when "excoll","wheel": :wheel
+      when "assi","tutor": :tutor
+      else 
+        case Account.get_passwd(user)
+        when :locked:    :locked
+        when :no_passwd: :no_passwd
+        else :normal
+        end
+      end                  
+    end  
+  end  
+  
+  def get_lock_state
+    case Account.get_passwd(self.account)
+    when :ok: false
+    else      true
     end
   end
 

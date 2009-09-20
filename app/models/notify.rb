@@ -24,17 +24,21 @@ class Notify
   def self.update(id, text)  
       File.open(id,"w") { |notify| notify.print text }
   end
+  
+  def self.delete(id)
+    `rm #{id}`
+  end
       
+  def initialize(id, body, time)
+    @id, @body, @time = id, body.to_s.chomp, time
+  end
+
   def delete
-    `rm #{self.id}`
+    Notify.delete(self.id)
   end
   
   def save
     Notify.update(self.id, self.body)
   end
    
-  def initialize(id, body, time)
-    @id, @body, @time = id, body.to_s.chomp, time
-  end
-
 end

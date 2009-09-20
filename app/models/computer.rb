@@ -17,11 +17,13 @@ class Computer < ActiveRecord::Base
   after_update :change_vtab
   named_scope :updated_after, lambda { |time| {:conditions => ["Time > ?", time]} }
 
+  # calculate color
   before_update do |record|
-    record.Color = CONFIG['color_mapping'][ Account.gen_color(record.user.split(" ")) ]
+    record.Color = CONFIG['color_mapping'][ Account.gen_major_color(record.user_list) ]
     Debug.log.debug "color change #{record.Cname} #{record.User} color is #{record.Color}"
   end
   
+  # set timestamp
   before_update do |record|
     record.time = Time.now.strftime("%j%H%M%S")
   end
@@ -30,17 +32,19 @@ class Computer < ActiveRecord::Base
     @user_list = self.user.split(" ")
   end
 
+  def user_list=(list)
+    @user_list = list 
+    self.user = list.join(" ")
+  end
 
   def xdm_restart
     `ssh root@s8 -- "ssh #{self.id} -- /etc/init.d/xdm restart"`
   end
 
-  
+  # TODO: quiet confusing  
   def remove_user(u)
-    list = self.user.split(" ")
-    list.delete(u)
-    self.user = list.join(" ")
-    #TODO auto generate color
+    self.user_list.delete(u)
+    self.user_list= @user_list
     save
   end
   

@@ -30,7 +30,7 @@ class Main
     @printers = Printer.printers
     @account_text = ""
     @scan_string = "220683"
-    self.status = ["indigoAdm", "gestartet", "pyadm_icon", 0]
+    self.status = ["frontDesk", "gestartet", "pyadm_icon", 0]
 
     @clusters = []
     @computers_cache = {}

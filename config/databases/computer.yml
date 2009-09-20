@@ -4,6 +4,8 @@ development:
   database: db/computer.sqlite3
 
 test:
+  adapter: sqlite3
+  database: db/computer.sqlite3
 
 production:
   adapter: mysql

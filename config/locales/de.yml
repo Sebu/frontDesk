@@ -14,7 +14,7 @@ de:
   scanner:  
     no_connection: 'keine Verbindung zum Scanner'
   main:
-    title: "indigoAdm 0.1a"
+    title: "frontDesk 0.1a"
   account:
     locked: "gelocket?"
     scanned: "eingelesen"
@@ -31,7 +31,7 @@ en:
   scanner:
     no_connection: 'no connection to scanner'
   main:
-    title: 'indigoAdm 0.1a by seb'
+    title: 'frontDesk 0.1a by seb'
   account:
     scanned: "scanned"
     ask_remove: "Remove accounts from card?"  

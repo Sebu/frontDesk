@@ -4,6 +4,8 @@ development:
   database: db/adm.sqlite3
 
 test:
+  adapter: sqlite3
+  database: db/adm.sqlite3
 
 production:
   adapter: mysql
