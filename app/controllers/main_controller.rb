@@ -202,6 +202,7 @@ class MainController < Indigo::Controller
     session[:old_timestamp] = 0
   end
 
+
   # add refresh and scanner threads 
   # TODO: move to somewhere else ( maybe computer and scanner controllers etc. )
   def start_threads
@@ -217,8 +218,6 @@ class MainController < Indigo::Controller
       Main.active.user_list.add(line.split(":").values_at(0, 4)) 
     }
 
-    
-           
     refresh = Thread.new {
       session[:old_timestamp] = 0
 
@@ -249,7 +248,6 @@ class MainController < Indigo::Controller
         sleep 20
       end  
     }
-
     
     # read data from scanner and dispatch
     require 'socket'
