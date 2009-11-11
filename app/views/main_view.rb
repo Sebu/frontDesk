@@ -42,7 +42,7 @@ window t'main.title' do
       render "cluster", :cluster => @main.clusters[12] #TODO: own view file
       render "cluster", :cluster => @main.clusters[11] 
       stack(:height=>100, :spacing=>2) {
-        @main.printers.each {|printer|render "printer", :printer => printer }
+        @printers.each {|printer|render "printer", :printer => printer }
       }    
       render "cluster", :cluster => @main.clusters[10]      
       render "cluster", :cluster => @main.clusters[9]  #TODO: own view file    

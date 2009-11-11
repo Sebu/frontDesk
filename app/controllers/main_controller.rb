@@ -6,6 +6,7 @@ class MainController < Indigo::Controller
   
   def show
     @main = Main.active
+    @printers = Printer.printers
     render.show_all
     start_threads #TODO :/
   end
@@ -17,7 +18,7 @@ class MainController < Indigo::Controller
 
   def drop_pool_store(data)
     return unless data
-    session[:pool_store] = data
+    session[:pool_store] = data[0]
     Main.active.status = ["#{session[:pool_store]['User']}", "von <b>#{session[:pool_store]['Cname']}</b> in store verschoben","trashcan_full",1]
   end
 
@@ -214,9 +215,9 @@ class MainController < Indigo::Controller
 
     # load user names from yppassed
     # TODO: move to user model class?
-    IO.popen("ypcat passwd").each { |line|
-      Main.active.user_list.add(line.split(":").values_at(0, 4)) 
-    }
+    #IO.popen("ypcat passwd").each { |line|
+    #  Main.active.user_list.add(line.split(":").values_at(0, 4)) 
+    #}
 
     refresh = Thread.new {
       session[:old_timestamp] = 0
@@ -243,7 +244,7 @@ class MainController < Indigo::Controller
         session[:old_timestamp] = Time.now.strftime("%j%H%M%S")
 
         # update printers
-        Main.active.printers.each { |p| p.update_job_count; p.update_accepts; p.update_snmp }
+        @printers.each { |p| p.update_job_count; p.update_accepts; p.update_snmp }
         puts "refresh end"
         sleep 20
       end  

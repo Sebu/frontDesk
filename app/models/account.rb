@@ -108,10 +108,10 @@ class Account < UserAccountDB
   def self.get_passwd(user)
     system("#{CONFIG['pw_check_file']} #{user}")
     case $?
-      when 0:   return :ok
-      when 256: return :no_passwd
-      when 512: return :locked
-      when 768: return :is_no_user
+      when 0   then return :ok
+      when 256 then return :no_passwd
+      when 512 then return :locked
+      when 768 then return :is_no_user
       #else raise "password check failed - returned #{$?}"
     end    
   end
@@ -128,17 +128,17 @@ class Account < UserAccountDB
   
   def self.gen_color(user)
     case user
-    when "jeder": :jeder
-    when "nobody": :nobody
+    when "jeder" then :jeder
+    when "nobody" then :nobody
     else
       return :normal unless INDIGO_ENV == "production"
       case `getgroup -stat "#{user}"`.chomp!
-      when "excoll","wheel": :wheel
-      when "assi","tutor": :tutor
+      when "excoll","wheel" then :wheel
+      when "assi","tutor" then :tutor
       else 
         case Account.get_passwd(user)
-        when :locked:    :locked
-        when :no_passwd: :no_passwd
+        when :locked then :locked
+        when :no_passwd then :no_passwd
         else :normal
         end
       end                  
@@ -147,7 +147,7 @@ class Account < UserAccountDB
   
   def get_lock_state
     case Account.get_passwd(self.account)
-    when :ok: false
+    when :ok then false
     else      true
     end
   end

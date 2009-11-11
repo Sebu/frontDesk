@@ -134,7 +134,7 @@ require 'open3'
     end
     def self.printer_names
       text = `LANG=EN; lpstat -a | grep -v "/"`
-      text.collect { |printer| printer.split(" ")[0] }
+      text.lines.collect { |printer| printer.split(" ")[0] }
     end
   end
 

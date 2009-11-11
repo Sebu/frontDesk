@@ -1,7 +1,7 @@
 
 
 class Computer < ActiveRecord::Base
-  require 'ftools'
+  require 'fileutils' #'ftools'
   include ObserveAttr 
   multi_db
 
