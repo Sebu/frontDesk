@@ -55,11 +55,11 @@ require 'open3'
     
    
     def self.cancel(job)
-      `ssh root@#{CONFIG['cups_server']} -- 'cancel #{job.id}'`
+      `ssh root@#{CONFIG['cups_host']} -- 'cancel #{job.id}'`
     end
 
     def self.move_job_to(job, target_name)
-      `ssh root@#{CONFIG['cups_server']} -- 'lpmove #{job.id} #{target_name}'`
+      `ssh root@#{CONFIG['cups_host']} -- 'lpmove #{job.id} #{target_name}'`
     end 
     
     def enabled?

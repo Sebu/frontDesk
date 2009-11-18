@@ -22,8 +22,7 @@ de:
   sendtext:
     title: Text senden
     default: |
-          mein Arsch
-          ist offen
+          wir machen in 20min (18Uhr) zu
               
     
 en:
@@ -37,4 +36,4 @@ en:
     ask_remove: "Remove accounts from card?"  
   sendtext:
     title: send text
-    default:  my ass
+    default:  the unix-pool will close in about 20min (6pm)
